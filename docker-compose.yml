@@ -1,0 +1,8 @@
+services:
+  ups-metrics-exporter-dev:
+    build: .
+    privileged: true
+    volumes:
+      - ./nut/:/etc/nut/:ro
+    ports:
+      - 80:80
