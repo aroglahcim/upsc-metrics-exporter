@@ -6,3 +6,10 @@ services:
       - ./nut/:/etc/nut/:ro
     ports:
       - 80:80
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/metrics", "||", "exit", "1"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 2
+      start_period: 30s
